@@ -81,7 +81,6 @@ You first want to create a data query (there are multiple ways to do this)
     - In the window labeled "From", click on the bucket you defined (i.e. SRTM-bucket)
     - There should be a second window called filter. Click on the "_measurement" option, and check the box next to "srtm".
     - You should see another filter window called "_field". Click on any number of variables you would like to examine. i.e. FPGA_temp
-    - Click on "last" to get the most recent value (not the mean).
     - You should see your data displayed in the top window.
     - Click on the "Script Editor" button in the middle of the window
     - This should display the query script that you can use in grafana. Copy and paste this text.
