@@ -32,7 +32,7 @@ Set up tunneling
 Modify telegraf.conf
   * change the endpoint IP address. The default is 192.168.0.117 with port 4841
 
-Start grafana (and influxDB and telegraf) for the first time
+Start grafana (and influxDB and telegraf) for the first time\
   **docker compose up -d**
     
 Start a web browser and navigate to the following address:
