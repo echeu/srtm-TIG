@@ -32,18 +32,51 @@ Modify telegraf.conf
 
 Start grafana (and influxDB and telegraf) for the first time
   * **docker compose up -d**
+Start a web browser and navigate to the following address:
+  * localhost:8096
+  * Click on "Get Started"
+  * Fill in Username (i.e. admin)
+  * Fill in Password
+  * Fill in Initial Organization Name (i.e. SRTM)
+  * Fill in Initial Bucket Name (i.e. SRTM-bucket)
+  * Click **Continue**
+  * Copy the API token
+
+Stop the docker container
+  * **docker compose down**
 
 Modify the .env file
   * Set the INFLUXDB_TOKEN to be the token created when you started influxDB for the first time.
   * Set the INFLUXDB_BUCKET to be the bucket you created from influxDB (default: SRTM-bucket)
   * Set the INFLUXDB_ORG to be the organization you set up in influcDB (default: SRTM)
+
+Set the permissions on the grafana directory (not sure why this is needed)
+  * **sudo chmod 777 grafana**
  
-The first time you run srtm-TIG, you will need to initialize a few settings such as the usernames and passwords for Grafana and Influxdb, as well as the security token for InfluxDB.
-  * Type the command: **docker compose up -d**
 ## Running srtm-TIG
-  * In the same directory as srtm-TIG, type: **docker compose up -d**
+
+Start the docker container again and start grafana
+  * Type the command: **docker compose up -d**
+
   * To see if srtm-TIG has successfully launched, type: **docker ps**
     - you should see three processes running: grafana, influxDB and telegraf
+  * In your browser navigate to: localhost:3020
+    - log onto grafana (the default username/password are: admin/admin)
+    - on the next screen you can create a new password. You can keep the default password by clicking on **skip**
+    - Click on the blue box **Add new data source**
+    - Choose the following Query language: **Flux**
+    - In the URL box type: **http://influxdb:8086**
+    - In the Organization box, type the organization: **SRTM** (by default)
+    - In the Token box, type the token you saved when you initiated InfluxDB
+    - In the Default Bucket, type the bucket you chose: **SRTM-bucket** (by default)
+    - In the Password box type: \<influxdb password\>
+    - Click on "Save & Test"
+    - You should see a green banner that says: "datasource is working"
+## Connecting influxDB to grafana
+  * You will need to connect influxDB to grafana
+  * On the left panel, click on **Connections/Add new connection**
+    - Search for InfluxDB in the main window and click on it.
+    - 
 ## Creating dashboards and visualizations
 ## Stopping srtm-TIG
   * In the same directory as srtm-TIG, type: **docker compose down**
