@@ -1,0 +1,6 @@
+from(bucket: "SRTM-bucket")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "srtm")
+  |> filter(fn: (r) => r["_field"] == "SRTM_c00" or r["_field"] == "SRTM_c01" or r["_field"] == "SRTM_c02" or r["_field"] == "SRTM_c03" or r["_field"] == "SRTM_c04" or r["_field"] == "SRTM_c05" or r["_field"] == "SRTM_c06" or r["_field"] == "SRTM_c07")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "last")
