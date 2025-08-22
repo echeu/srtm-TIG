@@ -57,7 +57,6 @@ Set the permissions on the grafana directory (not sure why this is needed)
 
 Start the docker container again and start grafana
   * Type the command: **docker compose up -d**
-
   * To see if srtm-TIG has successfully launched, type: **docker ps**
     - you should see three processes running: grafana, influxDB and telegraf
   * In your browser navigate to: localhost:3020
@@ -69,15 +68,40 @@ Start the docker container again and start grafana
     - In the Organization box, type the organization: **SRTM** (by default)
     - In the Token box, type the token you saved when you initiated InfluxDB
     - In the Default Bucket, type the bucket you chose: **SRTM-bucket** (by default)
-    - In the Password box type: \<influxdb password\>
     - Click on "Save & Test"
     - You should see a green banner that says: "datasource is working"
-## Connecting influxDB to grafana
-  * You will need to connect influxDB to grafana
-  * On the left panel, click on **Connections/Add new connection**
-    - Search for InfluxDB in the main window and click on it.
-    - 
+
 ## Creating dashboards and visualizations
+You first want to create a data query (there are multiple ways to do this)
+  * In a browser, navigate to localhost:8086
+    - Click on the fourth icon down on the left hand side of the window (it looks like a graph) called Data Explorer
+    - In the window labeled "From", click on the bucket you chose (i.e. SRTM-bucket)
+    - There should be a second window called filter. Click on the "_measurement" option, and check on "srtm".
+    - You should see another filter window called "_field". Click on any number of variables you would like to examine. i.e. FPGA_temp
+    - Click on "last" to get the most recent value (not the mean).
+    - You should see your data displayed in the top window.
+    - Click on the Script Editor button in the middle of the window
+    - This should display the query script that you can use in grafana. Copy and paste this text.
+   
+Now navigate (or open another browser window) to localhost:3020
+ * On the left hand side click on "Dashboards".
+   - Click on the blue button "+Create dashboard"
+   - Click on the blue button "+ Add visualization"
+   - On the Select data source panel, click on "influxdb"
+   - You can change the title of this panel using the options on the right hand side of the window, "Title"
+   - At the bottom of the page you will see a number (usually 1) followed by a box. Paste your query into this box.
+   - Click on the "Query inspector" button and click on "Refresh". This will run your query and show the data associated with the query.
+   - Click on the "Save dashboard" button to add this visualization to the dashboard.
+   - Clicking on the "Back to dashboard" button at the top of the page will allow you to see the completed panel.
+
+You may find that the legend titles are very long. 
+ * In the grafana edit panel
+ * On the rhs go to the bottom and "Add field override"
+ * Choose "Fields with name" option
+ * Choose the label you want to change in the "Fields with name" box
+ * Choose the override property "Standard options > Display name"
+ * Type in the new legend name
+
 ## Stopping srtm-TIG
   * In the same directory as srtm-TIG, type: **docker compose down**
 
