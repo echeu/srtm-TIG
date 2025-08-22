@@ -9,6 +9,7 @@ srtm-TIG runs as a docker application through the **docker compose** command
  * .env: holds environment variables used by Telegraf
  * compose.yaml: docker compose configuration file that defines the required services
  * telegraf.conf: configuration file for Telegraf. Defines the input and output protocols and identifies the OpcUA variables available
+ * sample_query.txt: example of a query to read and display the SRTM currents
 ## Setting up srtm-TIG
 Modify the file compose.yaml
   * grafana: 
