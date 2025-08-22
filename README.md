@@ -34,6 +34,7 @@ Modify telegraf.conf
 
 Start grafana (and influxDB and telegraf) for the first time
   * **docker compose up -d**\
+    
 Start a web browser and navigate to the following address:
   * localhost:8096
   * Click on "Get Started"
