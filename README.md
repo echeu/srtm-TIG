@@ -5,7 +5,10 @@ srtm-TIG runs as a docker application through the "docker compose" command
   * Grafana: platform for visualizing and monitoring data
   * InfluxDB: time-series database built for storing and analyzing large, time-stamped data values
   * Telegraf: server agent that is used for collecting, processing and writing data. It has a built-in OpcUa interface.
-
+## Files
+ * .env: holds environment variables used by Grafana, InfluxDB and Telegraf
+ * compose.yaml: docker compose configuration file that defines the required services
+ * telegraf.conf: configuration file for Telegraf. Defines the input and output protocols and identifies the OpcUA variables available
 ## Setting up srtm-TIG
 ## Running srtm-TIG
   * In the same directory as srtm-TIG, type: **docker compose up -d**
