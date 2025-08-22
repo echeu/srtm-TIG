@@ -33,7 +33,7 @@ Modify telegraf.conf
   * change the endpoint IP address. The default is 192.168.0.117 with port 4841
 
 Start grafana (and influxDB and telegraf) for the first time\
-  **docker compose up -d**
+  * **docker compose up -d**
     
 Start a web browser and navigate to the following address:
   * localhost:8096
@@ -46,7 +46,7 @@ Start a web browser and navigate to the following address:
   * Copy the API token
 
 Stop the docker container\
-  **docker compose down**
+  * **docker compose down**
 
 Modify the .env file
   * Set the INFLUXDB_TOKEN to be the token created when you started influxDB for the first time.
@@ -64,8 +64,8 @@ Start the docker container again and start grafana
     - you should see three processes running: grafana, influxDB and telegraf
   * In your browser navigate to: localhost:3020
     - log onto grafana (the default username/password are: admin/admin)
-    - on the next screen you can create a new password. You can keep the default password by clicking on **skip**
-    - Click on the blue box **Add new data source**
+    - on the next screen you can create a new password. You can keep the default password by clicking on "skip"
+    - Click on the blue box "Add new data source"
     - Choose the following Query language: **Flux**
     - In the URL box type: **http://influxdb:8086**
     - In the Organization box, type the organization: **SRTM** (by default)
@@ -77,13 +77,13 @@ Start the docker container again and start grafana
 ## Creating dashboards and visualizations
 You first want to create a data query (there are multiple ways to do this)
   * In a browser, navigate to localhost:8086
-    - Click on the fourth icon down on the left hand side of the window (it looks like a graph) called Data Explorer
+    - Click on the fourth icon down on the left hand side of the window called Data Explorer (it looks like a graph)
     - In the window labeled "From", click on the bucket you chose (i.e. SRTM-bucket)
-    - There should be a second window called filter. Click on the "_measurement" option, and check on "srtm".
+    - There should be a second window called filter. Click on the "_measurement" option, and check the box next to "srtm".
     - You should see another filter window called "_field". Click on any number of variables you would like to examine. i.e. FPGA_temp
     - Click on "last" to get the most recent value (not the mean).
     - You should see your data displayed in the top window.
-    - Click on the Script Editor button in the middle of the window
+    - Click on the "Script Editor" button in the middle of the window
     - This should display the query script that you can use in grafana. Copy and paste this text.
    
 Now navigate (or open another browser window) to localhost:3020
@@ -98,7 +98,7 @@ Now navigate (or open another browser window) to localhost:3020
    - Clicking on the "Back to dashboard" button at the top of the page will allow you to see the completed panel.
 
 You may find that the legend titles are very long. 
- * In the grafana edit panel
+ * In the Grafana edit panel
  * On the rhs go to the bottom and "Add field override"
  * Choose "Fields with name" option
  * Choose the label you want to change in the "Fields with name" box
@@ -106,5 +106,6 @@ You may find that the legend titles are very long.
  * Type in the new legend name
 
 ## Stopping srtm-TIG
-  * In the same directory as srtm-TIG, type: **docker compose down**
+In the same directory as srtm-TIG, type:
+  * **docker compose down**
 
