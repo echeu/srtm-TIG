@@ -42,11 +42,11 @@ Start a web browser and navigate to the following address:
   * Fill in Password
   * Fill in Initial Organization Name (i.e. SRTM)
   * Fill in Initial Bucket Name (i.e. SRTM-bucket)
-  * Click **Continue**
+  * Click "Continue"
   * Copy the API token
 
-Stop the docker container
-  * **docker compose down**
+Stop the docker container\
+  **docker compose down**
 
 Modify the .env file
   * Set the INFLUXDB_TOKEN to be the token created when you started influxDB for the first time.
