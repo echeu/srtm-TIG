@@ -26,9 +26,17 @@ Set up tunneling
       + where the **server name** is the full path to the machine where you are running docker
     - Also type: **ssh -L 8096:localhost:8096 \<username\>@\<server name\>**
       + note that we are using the port numbers defined in compose.yaml
+     
+Modify telegraf.conf
+  * change the endpoint IP address. The default is 192.168.0.117 with port 4841
+
+Start grafana (and influxDB and telegraf) for the first time
+  * **docker compose up -d**
 
 Modify the .env file
   * Set the INFLUXDB_TOKEN to be the token created when you started influxDB for the first time.
+  * Set the INFLUXDB_BUCKET to be the bucket you created from influxDB (default: SRTM-bucket)
+  * Set the INFLUXDB_ORG to be the organization you set up in influcDB (default: SRTM)
  
 The first time you run srtm-TIG, you will need to initialize a few settings such as the usernames and passwords for Grafana and Influxdb, as well as the security token for InfluxDB.
   * Type the command: **docker compose up -d**
