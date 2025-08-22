@@ -1,0 +1,33 @@
+services: 
+  grafana: 
+    image: grafana/grafana:latest
+    ports:
+      - "3020:3000"
+    volumes:
+      - /home/echeu/srtm-TIG/grafana:/var/lib/grafana
+
+  influxdb:
+    image: influxdb:latest
+    ports: 
+      - 8096:8086
+    volumes:
+      - /home/echeu/srtm-TIG/data:/var/lib/influxdb2
+    restart: unless-stopped
+
+  telegraf:
+    image: telegraf:latest
+    depends_on:
+      - influxdb
+    volumes:
+      - /home/echeu/srtm-TIG/telegraf.conf:/etc/telegraf/telegraf.conf
+    env_file:
+      - .env       
+    environment:
+      - INFLUXDB_HOST=${INFLUXDB_HOST}
+      - INFLUXDB_HTTP_PORT=${INFLUXDB_HTTP_PORT}
+      - INFLUXDB_TOKEN=${INFLUXDB_TOKEN}
+      - INFLUXDB_ORG=${INFLUXDB_ORG}
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET}
+      - TELEGRAF_COLLECTION_INTERVAL=${TELEGRAF_COLLECTION_INTERVAL}
+      - HOSTNAME=telegraf
+    restart: unless-stopped
