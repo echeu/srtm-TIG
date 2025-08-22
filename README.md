@@ -78,7 +78,7 @@ Start the docker container again and start grafana
 You first want to create a data query (there are multiple ways to do this)
   * In a browser, navigate to localhost:8086
     - Click on the fourth icon down on the left hand side of the window called Data Explorer (it looks like a graph)
-    - In the window labeled "From", click on the bucket you chose (i.e. SRTM-bucket)
+    - In the window labeled "From", click on the bucket you defined (i.e. SRTM-bucket)
     - There should be a second window called filter. Click on the "_measurement" option, and check the box next to "srtm".
     - You should see another filter window called "_field". Click on any number of variables you would like to examine. i.e. FPGA_temp
     - Click on "last" to get the most recent value (not the mean).
