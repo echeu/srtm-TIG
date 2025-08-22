@@ -24,7 +24,7 @@ Set up tunneling
   * In some cases you might be running the display web browser on a different machine (i.e. laptop) than docker is running. In this case you will want to tunnel the two ports: 3020 and 8086 to you device.
     - From a command window on your device/laptop, type: **ssh -L 3020:localhost:3020 \<username\>@\<server name\>**
       + where the **server name** is the full path to the machine where you are running docker
-    - Also type: **ssh -L 8096:localhost:8096 echeu@eepp-bigmem3.physics.arizona.edu**
+    - Also type: **ssh -L 8096:localhost:8096 \<username\>@\<server name\>**
       + note that we are using the port numbers defined in compose.yaml
 
 Modify the .env file
