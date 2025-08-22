@@ -1,7 +1,7 @@
 # srtm-TIG
 Grafana-based monitoring system for SRTM
 ## srtm-TIG relies upon three different services: Telegraf, InfluxDB and Grafana
-srtm-TIG runs as a docker application through the "docker compose" command
+srtm-TIG runs as a docker application through the **docker compose** command
   * Grafana: platform for visualizing and monitoring data
   * InfluxDB: time-series database built for storing and analyzing large, time-stamped data values
   * Telegraf: server agent that is used for collecting, processing and writing data. It has a built-in OpcUa interface.
@@ -21,17 +21,19 @@ Modify the file compose.yaml
     - volumes: location of the telegraf.conf file. By default it is set to /home/echeu/srtm-TIG/telegraf.conf
    
 Set up tunneling
-  * In some cases you might be running the display web browser on a different machine (i.e. laptop) than docker is running. In this case you will want to tunnel the two ports: 3020 and 8086 to you device.
-    - From a command window on your device/laptop, type: **ssh -L 3020:localhost:3020 \<username\>@\<server name\>**
+  * In some cases you might be running your web browser on a different machine (i.e. laptop) than docker is running. In this case you will want to tunnel the two ports: 3020 and 8086 to your device.
+    - From a command window on your device/laptop, type:\
+       **ssh -L 3020:localhost:3020 \<username\>@\<server name\>**
       + where the **server name** is the full path to the machine where you are running docker
-    - Also type: **ssh -L 8096:localhost:8096 \<username\>@\<server name\>**
+    - Also type:\
+       **ssh -L 8096:localhost:8096 \<username\>@\<server name\>**
       + note that we are using the port numbers defined in compose.yaml
      
 Modify telegraf.conf
   * change the endpoint IP address. The default is 192.168.0.117 with port 4841
 
 Start grafana (and influxDB and telegraf) for the first time
-  * **docker compose up -d**
+  * **docker compose up -d**\
 Start a web browser and navigate to the following address:
   * localhost:8096
   * Click on "Get Started"
